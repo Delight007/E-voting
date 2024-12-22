@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sevillana&family=Sixtyfour+Convergence&display=swap");
+.nav {
+  box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.12);
+  margin: auto;
+  padding: 0.5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: Blur(50px);
+}
+.content .head {
+  font-family: "Sixtyfour Convergence", serif;
+}
+.content {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+.content .links ul li {
+  display: inline;
+  padding: 0 1rem;
+}
+.content .links li a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Poppins", serif;
+  color: #c55555;
+  position: relative;
+}
+.content .links li a::before {
+  content: " ";
+  height: 2px;
+  background: #c55555;
+  position: absolute;
+  bottom: -0.2rem;
+  opacity: 0;
+  transform: translate(-1.6rem);
+  transition: all 0.3s ease;
+}
+.content .links li a:hover::before {
+  width: 100%;
+  opacity: 1;
+  transform: translate(0);
+}
+.btn {
+  width: 30px;
+  height: 40px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  display: none;
+  padding: 0;
+  margin: 0;
+}
+@media (max-width: 769px) {
+  .btn {
+    display: block;
+  }
+  .links {
+    display: none;
+  }
+}
+@media (max-width: 425px) {
+  .content .head {
+    margin-top: 0.5rem;
+    font-size: 15px;
+  }
+}

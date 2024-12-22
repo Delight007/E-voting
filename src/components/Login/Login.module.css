@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sevillana&family=Sixtyfour+Convergence&display=swap");
+
+section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container form {
+  max-width: 400px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.21);
+  padding: 2rem;
+  border-radius: 0.7rem;
+}
+.container form label {
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  font-family: "Poppins", serif;
+  font-size: 0.8rem;
+}
+.container form h1 {
+  text-align: center;
+  font-weight: 600;
+  font-family: "Sixtyfour Convergence", serif;
+  margin: 0.9rem 0;
+}
+form input,
+button {
+  height: 40px;
+  width: 300px;
+  box-sizing: border-box;
+}
+
+form input {
+  outline: none;
+  border: 1px solid #c55555;
+  font-family: "Poppins", serif;
+  font-size: 0.7rem;
+}
+.container .m_content {
+  display: flex;
+  flex-direction: column;
+  margin: 0.3rem auto;
+}
+.oR {
+  text-align: center;
+  margin: 1rem 0;
+  font-weight: 600;
+  font-family: "Poppins", serif;
+  color: #c55555;
+}
+.dont {
+  text-align: center;
+  font-weight: 500;
+  font-family: "Poppins", serif;
+  font-size: 0.8rem;
+}
+.dont a {
+  color: #c55555;
+}
+button {
+  margin-top: 1rem;
+  border: none;
+  background-color: #c55555;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.7rem;
+  font-family: "Poppins", serif;
+}
+@media (max-width: 768px) {
+  .container form {
+    max-width: 280px;
+    height: 480px;
+    padding: 1rem;
+    margin: 2rem;
+  }
+  .form input {
+    width: 280px;
+  }
+  .btn {
+    width: 280px;
+  }
+}
+@media (max-width: 425px) {
+  .container form {
+    max-width: 280px;
+    padding: 2rem;
+  }
+
+  .container form label {
+    margin-top: 0.8rem;
+  }
+
+  .container .form input {
+    width: 200px;
+    box-sizing: border-box;
+    padding: 0.8rem;
+  }
+  .btn {
+    width: 200px;
+    box-sizing: border-box;
+    padding: 0.8rem;
+  }
+  .container form h1 {
+    font-size: 1.4rem;
+  }
+  .dont {
+    font-size: 0.7rem;
+  }
+}

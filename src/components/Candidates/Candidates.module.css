@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+}
+.container div {
+  display: flex;
+  padding: 1rem 0;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.container p {
+  font-weight: 600;
+  font-family: "Poppins", serif;
+  font-size: 1rem;
+}

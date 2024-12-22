@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content {
+  width: 300px;
+  height: 200px;
+  background-color: #c55555;
+  color: #ffff;
+  margin: 1rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+@media (max-width: 425px) {
+  .content {
+    width: 200px;
+    height: 150pxs;
+  }
+}
