@@ -1,4 +1,4 @@
-import styles from "./positionList.module.css";
+import styles from "./PositionList.module.css";
 export default function PositionList({ position, isSelected, onSelected }) {
   return (
     <div
