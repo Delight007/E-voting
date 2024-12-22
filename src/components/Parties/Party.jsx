@@ -1,6 +1,6 @@
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
-import { db } from "../../FIrebase/Firebase";
+import { db } from "../../firebase/firebase";
 import styles from "./Party.module.css";
 import PartyList from "../PartyList/PartyList";
 import { Link } from "react-router-dom";

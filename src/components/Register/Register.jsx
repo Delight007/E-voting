@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Register.module.css";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../../FIrebase/Firebase";
+import { auth, db } from "../../firebase/firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";

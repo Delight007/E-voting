@@ -12,7 +12,7 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
-import { db } from "../../FIrebase/Firebase";
+import { db } from "../../firebase/firebase";
 import Candidates from "../Candidates/Candidates";
 import { toast } from "react-toastify";
 import styles from "./Vote.module.css";
