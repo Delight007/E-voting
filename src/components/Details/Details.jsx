@@ -1,7 +1,7 @@
 import styles from "./Details.module.css";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "../../FIrebase/Firebase";
+import { db } from "../../firebase/firebase";
 
 export default function Details() {
   const [details, setDetails] = useState([]);
