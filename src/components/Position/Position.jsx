@@ -1,6 +1,6 @@
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
-import styles from "./position.module.css";
+import styles from "./Position.module.css";
 import { db } from "../../firebase/firebase";
 import PositionList from "../PositionList/PositionList";
 import { Link } from "react-router-dom";
