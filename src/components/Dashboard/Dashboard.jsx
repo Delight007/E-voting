@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./Dashboard.module.css";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../FIrebase/Firebase";
+import { db } from "../../firebase/firebase";
 import { GlobalContext } from "../Context/GlobalContext";
 import PositionList from "../PositionList/PositionList";
 import { Link } from "react-router-dom";
