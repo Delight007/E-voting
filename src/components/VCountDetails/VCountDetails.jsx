@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../../FIrebase/Firebase";
+import { db } from "../../firebase/firebase";
 import VoteCard from "./VoteCard";
 import { useParams } from "react-router-dom";
 import styles from "./VCountDetails.module.css";
