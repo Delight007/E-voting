@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./AddDetails.module.css";
 import { addDoc, collection, getDocs } from "firebase/firestore";
-import { db } from "../../FIrebase/Firebase";
+import { db } from "../../firebase/firebase";
 import { toast } from "react-toastify";
 export default function AddDetails() {
   const [addCandidate, setAddCandidate] = useState("");
