@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Login.module.css";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../../FIrebase/Firebase";
+import { auth, googleProvider } from "../../firebase/firebase";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
