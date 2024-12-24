@@ -2,13 +2,14 @@ import { useState } from "react";
 import styles from "./Login.module.css";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../../firebase/firebase";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   async function Login(e) {
     e.preventDefault();
@@ -17,7 +18,7 @@ export default function Login() {
       const user = auth.currentUser;
       console.log(user);
       console.log("Login Successfully");
-      window.location.href = "/home";
+      navigate: "/home";
       toast.success("Success notification!", {
         position: "top-right",
       });
