@@ -18,7 +18,7 @@ export default function Login() {
       const user = auth.currentUser;
       console.log(user);
       console.log("Login Successfully");
-      navigate: "/home";
+      navigate("/home");
       toast.success("Success notification!", {
         position: "top-right",
       });
@@ -33,7 +33,7 @@ export default function Login() {
   async function signWIthGoogle() {
     try {
       await signInWithPopup(auth, googleProvider);
-      window.location.href = "/home";
+      navigate("/home");
     } catch (err) {
       console.log("error", err);
     }
