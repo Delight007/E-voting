@@ -10,21 +10,25 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [isPending, setIsPending] = useState(false);
 
   async function Login(e) {
     e.preventDefault();
     try {
+      setIsPending(true);
       await signInWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
       console.log(user);
       console.log("Login Successfully");
       navigate("/home");
-      toast.success("Success notification!", {
+      toast.success("Login Successfully!", {
         position: "top-right",
       });
+      setIsPending(false);
     } catch (err) {
       console.log(err.message);
-      toast.error(err.message, {
+      setIsPending(false);
+      toast.error("Login Error", {
         position: "bottom-center",
       });
     }
@@ -59,7 +63,9 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
             />
-            <button className={styles.btn}>Sign In</button>
+            <button className={styles.btn} disabled={isPending}>
+              {isPending ? "Signing in...." : "Sign In"}
+            </button>
             <button
               className={styles.btn}
               onClick={(e) => {

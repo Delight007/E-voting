@@ -4,8 +4,12 @@ import { FaTimes } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
 import Mobile from "../Mobile/Mobile";
+import useAuth from "../AddDetails/Auth";
 export default function Nav() {
+  const { isAdmin } = useAuth();
+
   const [openMenu, setOpenMenu] = useState(false);
+
   function toogleMenu() {
     setOpenMenu(!openMenu);
   }
@@ -35,9 +39,7 @@ export default function Nav() {
                 <Link to="/dashboard">Dashboard</Link>
               </li>
 
-              <li>
-                <Link to="/addDetail">Add Details</Link>
-              </li>
+              <li>{isAdmin && <Link to="/addDetail">Add Details</Link>}</li>
             </ul>
           </div>
           <button className={styles.btn} onClick={toogleMenu}>

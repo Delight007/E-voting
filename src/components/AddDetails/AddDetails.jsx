@@ -3,6 +3,7 @@ import styles from "./AddDetails.module.css";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import { toast } from "react-toastify";
+import useAuth from "./Auth";
 export default function AddDetails() {
   const [addCandidate, setAddCandidate] = useState("");
   const [addParty, setAddParty] = useState("");
@@ -58,19 +59,28 @@ export default function AddDetails() {
       return;
     }
     try {
+      setIsAdding(true);
       await addDoc(collection(db, "Candidates"), {
         name: addCandidate,
         partyId: Number(addParty),
         positionId: Number(addPosition),
       });
       toast.success("Successfully added candidate");
+      setIsAdding(false);
       setAddCandidate("");
       setAddParty("");
       setAddPosition("");
     } catch (err) {
       console.log("Candidate not added");
       toast.error("Candidate not added...");
+      setIsAdding(false);
     }
+  }
+
+  const { isAdmin } = useAuth();
+
+  if (!isAdmin) {
+    return <p>you do not have permission to this page</p>;
   }
   return (
     <div className={styles.container}>
@@ -82,7 +92,7 @@ export default function AddDetails() {
               type="text"
               value={addCandidate}
               onChange={(e) => setAddCandidate(e.target.value)}
-              placeholder="Enter position"
+              placeholder="Enter name"
             />
 
             <select
@@ -108,7 +118,9 @@ export default function AddDetails() {
                 </option>
               ))}
             </select>
-            <button className={styles.btn}>Add</button>
+            <button className={styles.btn} disabled={isAdding}>
+              {isAdding ? "Adding" : "Add"}
+            </button>
           </form>
         </div>
       </div>

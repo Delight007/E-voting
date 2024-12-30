@@ -28,11 +28,12 @@ export default function Dashboard() {
 
   return (
     <div className={styles.container}>
+      <h3>Select to check candidates vote-counts</h3>
       <div className={styles.content}>
         {position.map((position) => (
           <div key={position.id} className={styles.detail}>
             <Link to={`/dashboard/${position.id}`} className={styles.Link}>
-              <div className={styles.inLink}> {position.name}</div>
+              <p className={styles.inLink}> {position.name}</p>
             </Link>
           </div>
         ))}

@@ -28,6 +28,10 @@ export default function Vote() {
     setCandidates,
     selectedParty,
     selectedPosition,
+    setSelectPosition,
+    setSelectedPosition,
+    setSelectParty,
+    setSelectedParty,
     selectPosition,
   } = useContext(GlobalContext);
 
@@ -35,6 +39,7 @@ export default function Vote() {
   const [isPending, setIspending] = useState(true);
   const [isVoting, setIsvoting] = useState(false);
   const [selectedCandidate, setSelectedCandidate] = useState(null);
+  const [hasVoted, setHasVoted] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -68,6 +73,35 @@ export default function Vote() {
       }
     };
 
+    async function checkVoted() {
+      try {
+        const auth = getAuth();
+        const user = auth.currentUser;
+
+        if (!user || !selectedPosition) return;
+        const userId = user.uid;
+
+        const votesCollection = collection(db, "Votes");
+        const q = query(
+          votesCollection,
+          where("userId", "==", userId),
+          where("positionId", "==", selectedPosition)
+        );
+        const existiingVotesSnapshot = await getDocs(q);
+
+        if (!existiingVotesSnapshot.empty) {
+          toast.error("You have already voted for this position.", {
+            position: "top-center",
+          });
+          setHasVoted(true);
+        } else {
+          setHasVoted(false);
+        }
+      } catch (err) {
+        console.log("error", err);
+      }
+    }
+    checkVoted();
     fetchCandidates();
   }, [selectedParty, selectedPosition, setCandidates]);
 
@@ -101,21 +135,6 @@ export default function Vote() {
 
       const userId = user.uid;
 
-      const votesCollection = collection(db, "Votes");
-      const q = query(
-        votesCollection,
-        where("userId", "==", userId),
-        where("positionId", "==", selectedPosition)
-      );
-      const existiingVotesSnapshot = await getDocs(q);
-
-      if (!existiingVotesSnapshot.empty) {
-        toast.error("You have already voted for this position.", {
-          position: "top-center",
-        });
-        return;
-      }
-
       for (const candidateId of selectCandidate) {
         const votesRef = doc(collection(db, "Votes"));
         await setDoc(votesRef, {
@@ -136,9 +155,14 @@ export default function Vote() {
       toast.success("vote submitted Successfully", {
         position: "top-right",
       });
-
+      setHasVoted(true);
       setSelectCandidate([]);
-      navigate("/home");
+      setSelectedCandidate(null);
+      setSelectPosition([]);
+      setSelectedPosition(null);
+      setSelectParty([]);
+      setSelectedParty(null);
+      navigate("/dashboard");
     } catch (error) {
       console.error("Error incrementing votes: ", error);
       toast.error("Failed to submit your vote. Please try again.", {
@@ -169,8 +193,12 @@ export default function Vote() {
             </div>
           </div>
         ))}
-        <button className={styles.btn} onClick={addVotes} disabled={isVoting}>
-          {isVoting ? "Voting" : "Vote"}
+        <button
+          className={styles.btn}
+          onClick={addVotes}
+          disabled={isVoting || hasVoted}
+        >
+          {isVoting ? "Voting" : hasVoted ? "Already Voted" : "Vote"}
         </button>
       </div>
     </div>
