@@ -11,6 +11,7 @@ export default function VCountDetails() {
   const [parties, setParties] = useState([]);
   const [selectedParty, setSelectedParty] = useState("");
   const [filteredCandidates, setFilteredCandidates] = useState([]);
+  const [partyMap, setPartyMap] = useState({});
   const { positionId } = useParams();
 
   useEffect(() => {
@@ -48,6 +49,12 @@ export default function VCountDetails() {
         }));
         console.log("Fetched Party List:", partyList);
 
+        const partyMapping = {};
+        partyList.forEach((party) => {
+          partyMapping[party.id] = party.partyName;
+        });
+        setPartyMap(partyMapping);
+
         setParties(partyList);
       } catch (err) {
         console.log("Error fetching party:", err);
@@ -61,8 +68,13 @@ export default function VCountDetails() {
     console.log("Selected Party:", selectedParty);
     console.log("Candidates:", candidates);
 
+    const updatedCandidates = candidates.map((candidate) => ({
+      ...candidate,
+      partyName: partyMap[candidate.partyId],
+    }));
+
     if (selectedParty === "") {
-      setFilteredCandidates(candidates);
+      setFilteredCandidates(updatedCandidates);
     } else {
       const filtered = candidates.filter(
         (candidate) => candidate.partyId === selectedParty

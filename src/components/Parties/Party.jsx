@@ -8,14 +8,10 @@ import { GlobalContext } from "../Context/GlobalContext";
 import { toast } from "react-toastify";
 
 export default function Party() {
-  const { selectParty, setSelectParty, selectedParty, setSelectedParty } =
+  const { setSelectParty, selectedParty, setSelectedParty } =
     useContext(GlobalContext);
   const [parties, setParties] = useState([]);
   const [isPending, setIspending] = useState(true);
-  // const [selectedParty, setSelectedParty] = useState(null);
-  const [name, setName] = useState("");
-  const [partyName, setPartyName] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     async function fetchParties() {
